@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
 import Signup from '../signup/Signup';
@@ -9,9 +9,16 @@ import MovieList from './Movies/MovieList';
 import Sign_Up from '../signup/Sign_Up';
 import MovieDetails from './Movies/MovieDetails';
 import Selection from './Movies/Selection';
+import SeatSelection from './Movies/SeatSelection';
+import Bill from './Movies/Payment/Bill';
+import Theater_Home from '../Theater/Theater_Home';
 
 function Layout() {
   const [isMenuOpen,setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const hideNavbarPaths = ["/seatselection", "/bill" ,"/theaterhome" ];
+
+const hideNavbar = hideNavbarPaths.includes(location.pathname);
 
   const movies = [
   {
@@ -140,11 +147,11 @@ function Layout() {
   
   
   return (
-     <Router>
+     
         
       <div>
        
-        <Navbar isMenuOpen={isMenuOpen}  setIsMenuOpen={setIsMenuOpen} />
+        {!hideNavbar && <Navbar isMenuOpen={isMenuOpen}  setIsMenuOpen={setIsMenuOpen} />}
 
 
         <Routes>
@@ -157,8 +164,15 @@ function Layout() {
           <Route path="/login" element={<Login isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/>
           {/* <Route path="/movies" element={<Movies movies={movies} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/> */}
           <Route path="/movies" element={<MovieList movies={movies} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/>
-          <Route path="/moviedetails" element={<MovieDetails movies={movies} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/>
+          <Route path="/moviedetails" element={<MovieDetails  isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/>
           <Route path="/movieselection" element={<Selection movies={movies} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/>
+          <Route path="/seatselection" element={<SeatSelection movies={movies} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}/>
+          <Route path="/bill" element={<Bill/>}/>
+
+
+          <Route path="/theaterhome" element={<Theater_Home/>}/>
+
+
 
 
 
@@ -169,7 +183,7 @@ function Layout() {
       
      
       </div>
-       </Router>
+      
       
     
    

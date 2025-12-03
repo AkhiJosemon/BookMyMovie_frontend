@@ -1,9 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import "../../../assets/CSS/MovieDetails.css";
+import MobileMenu from '../MobileMenu';
 
 function MovieDetails({movies = [], isMenuOpen, setIsMenuOpen }) {
   return (
+    <>
+    <div className="fixed h-full z-50">
+        <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      </div>
     <div class="p-4" >
+        
 
         <div class="flex  flex-col md:flex-row  border-cyan-400 p-10 bg-gray-900/80  shadow-lg shadow-cyan-900/40   rounded-xl ">
         
@@ -40,7 +47,7 @@ function MovieDetails({movies = [], isMenuOpen, setIsMenuOpen }) {
         <div class="flex flex-col   gap-6 p-4 bg-gray-950 rounded-lg mt-4 ">
             <h1 class="flex text-white justify-center font-bold font-sans text-xl">CAST</h1>
 
-            <div class="flex flex-row gap-8 overflow-x-auto scrollbar-hide scroll-smooth">
+            <div class="flex flex-row  gap-8 overflow-x-auto hide-scrollbar scroll-smooth" >
                 <div class="flex flex-col w-auto gap-2 items-center p-2">
                     <img  class="h-32 min-w-32 rounded-full object-cover" src="https://images.filmibeat.com/webp/192x258/img/popcorn/profile_photos/dulquer-salmaan-20230711114845-26925.jpg"></img>
                     <h1 class="text-white text-base font-sans">Dulquer Salman</h1>
@@ -83,6 +90,7 @@ function MovieDetails({movies = [], isMenuOpen, setIsMenuOpen }) {
             </div>
         </div>
     </div>
+    </>
   )
 }
 

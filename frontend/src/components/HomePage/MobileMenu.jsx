@@ -18,8 +18,8 @@ function MobileMenu({isMenuOpen}) {
                   {/*<h1 className="font-bold font-mono text-3xl ml-10 text-cyan-800 mt-2">bookm!Movie</h1>*/}
                   </div>
                 <li className="font-bold font- text-white p-4 mx-8"><Link to="/home">Home</Link></li>
-                <li className="font-bold font- text-white p-4 mx-8">Movies</li>
-                <li className="font-bold font- text-white p-4 mx-8">Login</li>
+                <li className="font-bold font- text-white p-4 mx-8"><Link to="/movies">Movies</Link></li>
+                <li className="font-bold font- text-white p-4 mx-8"><Link to="/login">Login</Link></li>
                 <Link to="/signup"><button className="bg-cyan-600  rounded-2xl text-black p-4 py-2 mx-8"> <h1 className="font-bold text-white">Signup</h1></button></Link>
 
             </ul>
